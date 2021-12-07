@@ -13,7 +13,7 @@ I'm currently a PostDoc in the [REAL](https://real.itu.dk/) group at the IT Univ
 # Publications
 - **Palm, Rasmus Berg**, Elias Najarro, and Sebastian Risi. "Testing the genomic bottleneck hypothesis in Hebbian meta-learning." NeurIPS 2020 Workshop on Pre-registration in Machine Learning. PMLR, 2021.
 - González-Duque, Miguel, **Rasmus Berg Palm**, and Sebastian Risi. "Fast Game Content Adaptation Through Bayesian-based Player Modelling." arXiv preprint arXiv:2105.08484 (2021).
-- Olesen, Thor VAN, **Rasmus Berg Palm** and Sebastian Risi. "Evolutionary Planning in Latent Space." International Conference on the Applications of Evolutionary Computation. 2021.
+- Olesen, Thor V.A.N., Dennis T.T. Nguyen, **Rasmus Berg Palm** and Sebastian Risi. "Evolutionary Planning in Latent Space." International Conference on the Applications of Evolutionary Computation. 2021.
 - **Palm, Rasmus Berg** and Pola Schwöbel. "Justitia ex Machina: The Case for Automating Morals". The Gradient, 2021.
 - Grbic, Djordje, **Rasmus Berg Palm**, Elias Najarro, Claire Glanois and Sebastian Risi. "EvoCraft: A New Challenge for Open-Endedness." EvoApplications. 2021.
 - González-Duque, Miguel, **Rasmus Berg Palm**, David Ha and Sebastian Risi. "Finding Game Levels with the Right Difficulty in a Few Trials through Intelligent Trial-and-Error." 2020 IEEE Conference on Games (CoG). IEEE, 2020.
@@ -33,6 +33,3 @@ I'm currently a PostDoc in the [REAL](https://real.itu.dk/) group at the IT Univ
 - [pytorch-lgssm](https://github.com/rasmusbergpalm/pytorch-lgssm) A clean Linear Gaussian State Space Model for pytorch, which supports sampling and inference using the Kalman filtering algorithm.
 - [Blayze](https://github.com/Tradeshift/blayze) A very fast and efficient *Bayesian* Naive Bayes classifier which perfectly incorporates new information in an online learning setting and support both Gaussian and Categorical/Multinomial features.
 - [DeepLearnToolbox](https://github.com/rasmusbergpalm/DeepLearnToolbox) - A now deprecated Matlab toolbox for Deep Learning. I was unwise enough to do my Masters on Deep Learning in Matlab, which didn't have any support for it, so I made a library for MLPs, CNNs, DBN, etc, implementing everything from the ground up, including the gradients, backprop, etc. It became quite popular. I quickly moved on to Python though (yay autograd!), and deprecated it.
-
-
- 
