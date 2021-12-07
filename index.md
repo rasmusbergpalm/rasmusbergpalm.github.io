@@ -11,6 +11,7 @@ I'm currently a PostDoc in the [REAL](https://real.itu.dk/) group at the IT Univ
 > "What I cannot create, I do not understand." - Richard Feynman
 
 # Publications
+
 - **Palm, Rasmus Berg**, Elias Najarro, and Sebastian Risi. "Testing the genomic bottleneck hypothesis in Hebbian meta-learning." NeurIPS 2020 Workshop on Pre-registration in Machine Learning. PMLR, 2021.
 - González-Duque, Miguel, **Rasmus Berg Palm**, and Sebastian Risi. "Fast Game Content Adaptation Through Bayesian-based Player Modelling." arXiv preprint arXiv:2105.08484 (2021).
 - Olesen, Thor V.A.N., Dennis T.T. Nguyen, **Rasmus Berg Palm** and Sebastian Risi. "Evolutionary Planning in Latent Space." International Conference on the Applications of Evolutionary Computation. 2021.
@@ -24,7 +25,9 @@ I'm currently a PostDoc in the [REAL](https://real.itu.dk/) group at the IT Univ
 - **Palm, Rasmus Berg**, Dirk Hovy, Florian Laws and Ole Winther. "End-to-End Information Extraction without Token-Level Supervision." Proceedings of the Workshop on Speech-Centric Natural Language Processing. 2017.
 - **Palm, Rasmus Berg**. "Prediction as a candidate for learning deep hierarchical models of data." Master thesis - Technical University of Denmark (2012).
 
-# Open Source
+# Software
+
+I often create software libraries and tools and I love publishing them as open source. It lets me write clean code, think about abstractions and interfaces and ship working software to users, which I enjoy.
 
 - [nanograd](https://github.com/rasmusbergpalm/nanograd) - The simplest and smallest possible library for autograd. Great for teaching.
 - [shapeguard](https://github.com/rasmusbergpalm/shapeguard) - A tiny library, which allows you to very succinctly assert the expected shapes of tensors in a dynamic, einsum inspired way. A great tool for avoiding bugs.
@@ -33,3 +36,11 @@ I'm currently a PostDoc in the [REAL](https://real.itu.dk/) group at the IT Univ
 - [pytorch-lgssm](https://github.com/rasmusbergpalm/pytorch-lgssm) A clean Linear Gaussian State Space Model for pytorch, which supports sampling and inference using the Kalman filtering algorithm.
 - [Blayze](https://github.com/Tradeshift/blayze) A very fast and efficient *Bayesian* Naive Bayes classifier which perfectly incorporates new information in an online learning setting and support both Gaussian and Categorical/Multinomial features.
 - [DeepLearnToolbox](https://github.com/rasmusbergpalm/DeepLearnToolbox) - A now deprecated Matlab toolbox for Deep Learning. I was unwise enough to do my Masters on Deep Learning in Matlab, which didn't have any support for it, so I made a library for MLPs, CNNs, DBN, etc, implementing everything from the ground up, including the gradients, backprop, etc. It became quite popular. I quickly moved on to Python though (yay autograd!), and deprecated it.
+
+# Teaching
+
+I thoroughly enjoy teaching. It challenges me to understand things at a much deeper level, and I find it very rewarding.
+
+- 5 lectures and project supervision in [Advanced Applied Statistics and Multivariate Calculus](https://learnit.itu.dk/local/coursebase/view.php?ciid=789), 2021
+- 3 lectures and project supervision in [Modern AI](https://learnit.itu.dk/local/coursebase/view.php?ciid=749), 2020 and 2021
+
