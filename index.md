@@ -12,18 +12,18 @@ I'm currently a PostDoc in the [REAL](https://real.itu.dk/) group at the IT Univ
 
 # Publications
 
-- **Palm, Rasmus Berg**, Elias Najarro, and Sebastian Risi. "Testing the genomic bottleneck hypothesis in Hebbian meta-learning." NeurIPS 2020 Workshop on Pre-registration in Machine Learning. PMLR, 2021.
-- González-Duque, Miguel, **Rasmus Berg Palm**, and Sebastian Risi. "Fast Game Content Adaptation Through Bayesian-based Player Modelling." arXiv preprint arXiv:2105.08484 (2021).
-- Olesen, Thor V.A.N., Dennis T.T. Nguyen, **Rasmus Berg Palm** and Sebastian Risi. "Evolutionary Planning in Latent Space." International Conference on the Applications of Evolutionary Computation. 2021.
-- **Palm, Rasmus Berg** and Pola Schwöbel. "Justitia ex Machina: The Case for Automating Morals". The Gradient, 2021.
-- Grbic, Djordje, **Rasmus Berg Palm**, Elias Najarro, Claire Glanois and Sebastian Risi. "EvoCraft: A New Challenge for Open-Endedness." EvoApplications. 2021.
-- González-Duque, Miguel, **Rasmus Berg Palm**, David Ha and Sebastian Risi. "Finding Game Levels with the Right Difficulty in a Few Trials through Intelligent Trial-and-Error." 2020 IEEE Conference on Games (CoG). IEEE, 2020.
-- **Palm, Rasmus Berg**, Florian Laws, and Ole Winther. "Attend, copy, parse end-to-end information extraction from documents." 2019 International Conference on Document Analysis and Recognition (ICDAR). IEEE, 2019.
-- **Palm, Rasmus Berg**. "End-to-end information extraction from business documents." English, PhD thesis (2018).
-- **Palm, Rasmus Berg**, Ulrich Paquet, and Ole Winther. "Recurrent relational networks." Proceedings of the 32nd International Conference on Neural Information Processing Systems. 2018.
-- **Palm, Rasmus Berg**, Ole Winther, and Florian Laws. "Cloudscan - a configuration-free invoice analysis system using recurrent neural networks." 2017 14th IAPR International Conference on Document Analysis and Recognition (ICDAR). Vol. 1. IEEE, 2017.
-- **Palm, Rasmus Berg**, Dirk Hovy, Florian Laws and Ole Winther. "End-to-End Information Extraction without Token-Level Supervision." Proceedings of the Workshop on Speech-Centric Natural Language Processing. 2017.
-- **Palm, Rasmus Berg**. "Prediction as a candidate for learning deep hierarchical models of data." Master thesis - Technical University of Denmark (2012).
+- **Palm, Rasmus Berg**, Elias Najarro, and Sebastian Risi. [Testing the genomic bottleneck hypothesis in Hebbian meta-learning](https://arxiv.org/abs/2011.06811) NeurIPS 2020 Workshop on Pre-registration in Machine Learning. PMLR, 2021.
+- González-Duque, Miguel, **Rasmus Berg Palm**, and Sebastian Risi. [Fast Game Content Adaptation Through Bayesian-based Player Modelling](https://arxiv.org/abs/2105.08484) arXiv preprint arXiv:2105.08484 (2021).
+- Olesen, Thor V.A.N., Dennis T.T. Nguyen, **Rasmus Berg Palm** and Sebastian Risi. [Evolutionary Planning in Latent Space](https://arxiv.org/abs/2011.11293) International Conference on the Applications of Evolutionary Computation. 2021.
+- **Palm, Rasmus Berg** and Pola Schwöbel. [Justitia ex Machina: The Case for Automating Morals](https://thegradient.pub/justitia-ex-machina/). The Gradient, 2021.
+- Grbic, Djordje, **Rasmus Berg Palm**, Elias Najarro, Claire Glanois and Sebastian Risi. [EvoCraft: A New Challenge for Open-Endedness](https://arxiv.org/abs/2012.04751) EvoApplications. 2021.
+- González-Duque, Miguel, **Rasmus Berg Palm**, David Ha and Sebastian Risi. [Finding Game Levels with the Right Difficulty in a Few Trials through Intelligent Trial-and-Error](https://arxiv.org/abs/2005.07677) 2020 IEEE Conference on Games (CoG). IEEE, 2020.
+- **Palm, Rasmus Berg**, Florian Laws, and Ole Winther. [Attend, copy, parse end-to-end information extraction from documents](https://arxiv.org/abs/1812.07248) 2019 International Conference on Document Analysis and Recognition (ICDAR). IEEE, 2019.
+- **Palm, Rasmus Berg**. [End-to-end information extraction from business documents](https://orbit.dtu.dk/en/publications/end-to-end-information-extraction-from-business-documents) English, PhD thesis (2018).
+- **Palm, Rasmus Berg**, Ulrich Paquet, and Ole Winther. [Recurrent Relational Networks](https://arxiv.org/abs/1711.08028) Proceedings of the 32nd International Conference on Neural Information Processing Systems. 2018.
+- **Palm, Rasmus Berg**, Ole Winther, and Florian Laws. [Cloudscan - a configuration-free invoice analysis system using recurrent neural networks](https://arxiv.org/abs/1708.07403) 2017 14th IAPR International Conference on Document Analysis and Recognition (ICDAR). Vol. 1. IEEE, 2017.
+- **Palm, Rasmus Berg**, Dirk Hovy, Florian Laws and Ole Winther. [End-to-End Information Extraction without Token-Level Supervision](https://arxiv.org/abs/1707.04913) Proceedings of the Workshop on Speech-Centric Natural Language Processing. 2017.
+- **Palm, Rasmus Berg**. [Prediction as a candidate for learning deep hierarchical models of data](https://www2.imm.dtu.dk/pubdb/pubs/6284-full.html) Master thesis - Technical University of Denmark (2012).
 
 # Software
 
