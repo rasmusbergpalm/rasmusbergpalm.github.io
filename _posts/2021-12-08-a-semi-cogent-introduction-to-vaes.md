@@ -21,6 +21,6 @@ That's fair, but I would have loved a single cogent argument starting from "let'
 <br />
 <small> MNIST samples from a "VAE", that is not variational and does not auto-encode, it just samples from the prior. </small>
 
-The tutorial itself is in colab, and the format is that of a small seminar, but it should be readable on its own. I hope you enjoy it.
+The introduction itself is in colab, and the format is that of a small seminar, but it should be readable on its own. I hope you enjoy it.
 
-https://colab.research.google.com/drive/1NiqTSUr_YsBHSiizuSZUw2j9p-vGTbBA?usp=sharing
+<a href="https://colab.research.google.com/drive/1NiqTSUr_YsBHSiizuSZUw2j9p-vGTbBA">Link to the introduction</a>
