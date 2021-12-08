@@ -15,7 +15,7 @@ That surely is impressive, but there was no argument *why* anyone would look at 
 
 Now I realize, that there's a rich history of considering this KL divergence in variational inference (VI), for its own sake, and that it was known that it lead to a lower bound on $\log p(x)$. So the argument could simply be, "we happen to know this lower bound on $\log p(x)$ from variational inference, go read up on that". 
 
-That's fair, but I would have loved a single cogent argument starting from "let's build a generative model" straight to the lower bound (ELBO), and amortized VI. So I spent some time coming up with my best stab at a semi-cogent argument, from nothing all the way to the ELBO/amortized VI, through importance sampling. The cool part about doing it this way is you realize all the branches and choices along the way, which lead me to the somewhat surprising result that you can actually train a semi-decent model of MNIST by just sampling from the prior, no encoder or VI needed at all.
+That's fair, but I would have loved a single cogent argument starting from "let's build a generative model" straight to the lower bound (ELBO), and amortized VI. So I spent some time coming up with my best stab at a semi-cogent argument, from nothing all the way to the ELBO/amortized VI, through importance sampling. The cool part about doing it this way is you realize all the branches and choices along the way, which lead me to the somewhat surprising result that you can actually train a model of MNIST digits by just sampling from the prior, no encoder or VI needed at all. It is by no means a good model, but it works.
 
 <img src="https://drive.google.com/uc?id=19gxET4Bqv8O9HD0HpbY5Y8U-KRQMYUNn" />
 <br />
