@@ -1,10 +1,9 @@
 ---
-layout: default
+layout: post
 title: "A meandering introduction to VAEs - part 2"
 ---
 # A meandering introduction to VAEs - part 2
 
-# Latent Variable Models
 The VAE is a so called Latent Variable Model (LVM). So what is a latent variable model? A simple latent variable model defines a probabilistic generative model of $x$ in the following way, 
 
 $$z \sim p(z  \vert  \theta)$$

@@ -1,10 +1,8 @@
 ---
-layout: default
+layout: post
 title: "A meandering introduction to VAEs - part 4"
 ---
 # A meandering introduction to VAEs - part 4
-
-# Approach 3 - Use a better lower bound.
 
 We can find a consistent estimator by not using Jensens inequality,
 

@@ -1,10 +1,8 @@
 ---
-layout: default
+layout: post
 title: "A meandering introduction to VAEs - part 3"
 ---
 # A meandering introduction to VAEs - part 3
-
-# Approach 2 - Use Jensens inequality
 
 So what can we do if we want to estimate $\log p(x \vert \theta)$? Well, we can push the log into the expectation using [Jensens inequality](https://en.wikipedia.org/wiki/Jensen%27s_inequality), since log is a concave function. This turns the right hand side into a lower bound on $\log p(x \vert \theta)$.
 
