@@ -2,3 +2,5 @@ title: Rasmus Berg Palm
 logo: photo.jpg
 description: "Machine Learning Researcher and Engineer"
 theme: jekyll-theme-minimal
+markdown: kramdown
+mathjax: true

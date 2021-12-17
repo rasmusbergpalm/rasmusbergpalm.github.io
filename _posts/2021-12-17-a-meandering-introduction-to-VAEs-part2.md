@@ -6,14 +6,19 @@ title: "A meandering introduction to VAEs - part 2"
 
 # Latent Variable Models
 The VAE is a so called Latent Variable Model (LVM). So what is a latent variable model? A simple latent variable model defines a probabilistic generative model of $x$ in the following way, 
+
 $$z \sim p(z | \theta)$$
+
 $$x \sim p(x | z, \theta) \,,$$
+
 Which reads,
 1. Draw a sample of the latent variables $z$ (conditioned on the model parameters $\theta$).
 2. Draw a sample of $x$ conditioned on the drawn latent variables $z$ (and the the model parameters $\theta$).
 
 The probability distribution over $x$ is then 
-$$p(x|\theta) = \int_z p(x, z|\theta) = \int_z p(x|z, \theta)p(z|\theta) \,.$$ 
+
+$$p(x|\theta) = \int_z p(x, z|\theta) = \int_z p(x|z, \theta)p(z|\theta) \,.$$
+
 For simplicity, authors rarely show the explicit conditioning on the model parameters $\theta$ in papers, or sometimes they'll write $p_\theta(x)$, but it means the same thing.
 
 So why might latent variable models be a good idea?
@@ -29,7 +34,9 @@ So why might latent variable models be a good idea?
 # A latent variable model of MNIST digits
 
 OK, so we have our probability distribution over $x$ for our LVM,
-$$p(x|\theta) = \int_z p(x, z|\theta) = \int_z p(x|z, \theta)p(z|\theta) \,.$$ 
+
+$$p(x|\theta) = \int_z p(x, z|\theta) = \int_z p(x|z, \theta)p(z|\theta) \,.$$
+
 and if you recall, I said that maximizing the probability of the data under our model is all we need. 
 
 What does $p(z|\theta)$ and $p(x|z, \theta)$ actually look like though? And how do we evaluate the integral? At this point an example is instructive. We'll define a LVM on MNIST, and get back to the integral.
@@ -41,9 +48,13 @@ MNIST is arguably the "hello world" dataset of generative modelling. It consists
 The values of each pixel in the original dataset is between 0 and 1, and can be seen as an intensity. We'll use a version called static MNIST where the pixels have instead been sampled with probability equal to these intensities, such that they are binary, 0 or 1, since this is the norm in the generative modelling litterature. For simplicity we'll flatten each $28 \times 28$ image into a vector of $784$ binary values, such that $x_j$ denotes the $j$'th value.
 
 Now, let's specify our model in a little more detail,
+
 $$ z_i \sim \mathcal{N}(z_i|\mu=0, \sigma=1) \, \text{for} \, i \, \text{in} \, [1, ..., K]\,, $$
+
 $$ [p_1, ..., p_{784}] = \text{NN}_\theta([z_1, ..., z_k]) \,,$$
+
 $$ x_j \sim \text{Bernoulli}(x_j|p = p_j) \, \text{for} \, j \, \text{in} \, [1, ..., 784] \,. $$
+
 This reads,
 1. Sample $K$ latent variables from independent normal distributions with mean 0 and standard deviation 1. K is a hyper-parameter, the size of our latent space, something we'll decide on later.
 2. Turn those $K$ latent variables into a vector of length $K$ and pass that vector through a Neural Network with $\theta$ parameters, the weights and biases of the network. The output of the neural network is a vector of $784$ probabilities (0-1). Notice that we're using an equal sign here, and not a $\sim$ sign, since it's a deterministic computation not a sample.
@@ -101,15 +112,19 @@ That certainly doesn't look like handwritten digits, which is no surprise since 
 Please make sure you understand the code above before moving on. Notice how closely it resembles the model definition; the model definition is quite literally a recipe for sampling from the model. Note: I'm showing $1-x$ so that the "on" pixels are dark, and the "off" pixels are light, since it looks better on a white background. It's purely an aesthetic detail.
 
 So how do we find $\theta$? As before, by maximizing the probability of the observed data under our model. Again, this is equivialent to maximizing the log probability of the observed data under the model. 
-\begin{align}
+
+$$\begin{align}
  \theta_{MLE} &= \max_\theta p(x|\theta) \\
  &= \max_\theta \log p(x|\theta) \\ 
  &= \max_\theta \log \int_z p(x|z, \theta)p(z) \,.
-\end{align}
+\end{align}$$
+
 Note: I removed the dependence on $\theta$ in the prior, because our prior $p(z)$ does not have any parameters. 
 
-Just to be very clear what I mean, I'll write out the full definition of $p(x|\theta)$ for our model, 
+Just to be very clear what I mean, I'll write out the full definition of $p(x|\theta)$ for our model,
+
 $$p(x|\theta) = \int_z p(x|z, \theta)p(z) = \int_{z_1} ... \int_{z_K} \prod_{j=1}^{784} \text{Bernoulli}(x_j | p=p_j) \prod_{i=1}^K \mathcal{N}(z_i | \mu=0, \sigma=1) \,,$$
+
 where $p_j$ are the output of the neural network. 
 
 We'll continue with the simple form however, to keep things somewhat neat.
@@ -123,11 +138,17 @@ A plethora of methods have been proposed, and it's instructive to go through som
 # Approach 1 - Estimate $p(x|\theta)$ with samples
 
 First we'll note that by definition of the [expectation](https://en.wikipedia.org/wiki/Expected_value), $p(x|\theta)$ is equal to the expectation over $p(x|z, \theta)$ with $z$ drawn from $p(z)$,
+
 $$p(x|\theta) = \int_z p(x|z, \theta)p(z) = \mathbb{E}_{z \sim p(z)} p(x|z, \theta) \,.$$
+
 We can write the expectation as an average over an infinite amount of samples from $p(z)$,
+
 $$p(x|\theta) = \mathbb{E}_{z \sim p(z)} p(x|z, \theta) = \lim_{N \rightarrow \infty } \frac{1}{N} \sum_{i=1}^N p(x|z_i \sim p(z), \theta) \,.$$
+
 Unfortunately, we can't sample an infinite amount of samples, so we'll have to sample a finite amount, which means we'll be approximating this expectation
+
 $$p(x|\theta) = \mathbb{E}_{z \sim p(z)} p(x|z, \theta) \approx \frac{1}{N} \sum_{i=1}^N p(x|z_i \sim p(z), \theta) \,.$$
+
 where $N$, the amount of samples, is a hyper-parameter we'll have to choose. This is an [unbiased](https://en.wikipedia.org/wiki/Bias_of_an_estimator) and [consistent](https://en.wikipedia.org/wiki/Consistent_estimator) estimator, meaning it doesn't systematically under or over-estimates the true expectation, and it converges to the true expectation in the limit of infinite samples, which is great!
 
 There's just one snag, the probabilities tend to underflow. Let's assume our NN is pretty good and outputs $p=0.8$ for all the pixels that are $1$, and $p=0.2$ for all the pixels that are $0$, then $p(x|z, \theta) = \prod_{i=1}^{784} p_j^{x_j}(1-p_j)^{1-x_j} = 0.8^{784}$, which is a small number, but definitely not 0, but when we ask the computer to evaluate it, it [underflows](https://en.wikipedia.org/wiki/Arithmetic_underflow), and say it's 0. 
