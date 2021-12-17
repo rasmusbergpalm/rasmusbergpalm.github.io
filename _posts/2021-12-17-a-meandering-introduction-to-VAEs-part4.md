@@ -7,18 +7,22 @@ title: "A meandering introduction to VAEs - part 4"
 # Approach 3 - Use a better lower bound.
 
 We can find a consistent estimator by not using Jensens inequality,
-\begin{align}
+
+$$\begin{align}
 \log p(x \vert \theta) &= \log \mathbb{E}_{z_i \sim p(z)} p(x \vert z, \theta) \\
 &= \log \lim_{N \rightarrow \infty} \frac{1}{N} \sum_{i=1}^K p(x \vert z_i \sim p(z), \theta) \\
 &= \lim_{N \rightarrow \infty} \log \frac{1}{N} \sum_{i=1}^K p(x \vert z_i \sim p(z), \theta) \,,
-\end{align}
+\end{align}$$
+
 where the last line is allowed since $\log$ is continous. This is kind of intuitive, as we take more and more samples, the term inside the log approaches $p(x \vert \theta)$, and in the limit it **is** $p(x \vert \theta)$, so taking the log gives us $\log p(x \vert \theta)$.
 
 What happens when we don't take an infinite number of samples though? We can show that it is a biased estimator by using Jensens again,
-\begin{align}
+
+$$\begin{align}
 \log p(x \vert \theta) &= \log \mathbb{E}_{z_1, ..., z_N \sim p(z)} \frac{1}{N} \sum_{i=1}^N p(x \vert z_i, \theta) \\
 \log p(x \vert \theta) &\geq \mathbb{E}_{z_1, ..., z_N \sim p(z)} \log \frac{1}{N} \sum_{i=1}^N p(x \vert z_i, \theta) = L_N
-\end{align}
+\end{align}$$
+
 Admittedly, this expression can be hard to understand. In the first line we're taking an expectation over $N$ sample averages. Think of it this way: we sample a $J \times N$ matrix of $z$'s from $p(z)$, and then the inner sum is over the second dimension ($N$), and the expectation is a sum over the first dimension, where we have an infinite amount of samples $J$. This means we're effectively taking an average with an infinite amount of samples, so we get the expectation back. Another way to think about it is that we're summing the same infinite amount of samples just in different order. We get the second line by applying Jensens inequality.
 
 So now we can see that the full expression is a lower bound, and the term inside the expectation is a biased but consistent estimate. We already know what happens as $N \rightarrow \infty$, then the bound becomes an equality. We can also see what happens when $N=1$, which is that we recover our previous bound, $\log p(x \vert \theta) \geq \mathbb{E}_{z_1 \sim p(z)} \log p(x \vert z_1, \theta)$, 
@@ -28,10 +32,10 @@ You can see [this notebook](https://colab.research.google.com/drive/1M_bCX7mtaUQ
 
 One final trick before we can start implementing. The astute reader will notice that we're still computing in probabilities inside the sum, and not log-probabilities. However, with a little arithmetic, we can use the [logsumexp](https://en.wikipedia.org/wiki/LogSumExp) trick. The logsumexp trick is a trick for computing functions of the form $f(x) = \log \sum_i e^{x_i}$, in a numerically stable way.
 
-\begin{align}
+$$\begin{align}
 \log \frac{1}{N} \sum_{i=1}^N p(x \vert z_i \sim p(z), \theta) &= \log \frac{1}{N} \sum_{i=1}^N \exp{\log{p(x \vert z_i \sim p(z), \theta)}} \\
 &= \text{logsumexp}_{i=1}^N \left[ \log p(x \vert z_i \sim p(z), \theta) \right]- \log N \,.
-\end{align}
+\end{align}$$
 
 Let's code it up. The code is identical for the last model, except a single line in the loss, which I've highlighted.
 

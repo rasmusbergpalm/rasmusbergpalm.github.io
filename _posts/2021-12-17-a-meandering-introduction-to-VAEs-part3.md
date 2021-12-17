@@ -8,10 +8,10 @@ title: "A meandering introduction to VAEs - part 3"
 
 So what can we do if we want to estimate $\log p(x \vert \theta)$? Well, we can push the log into the expectation using [Jensens inequality](https://en.wikipedia.org/wiki/Jensen%27s_inequality), since log is a concave function. This turns the right hand side into a lower bound on $\log p(x \vert \theta)$.
 
-\begin{align}
+$$\begin{align}
  \log p(x \vert \theta) &= \log \mathbb{E}_{z \sim p(z)} p(x \vert z, \theta) \\ 
   &\geq \mathbb{E}_{z \sim p(z)} \log p(x \vert z, \theta) \\ 
-\end{align}
+\end{align}$$
 
 If we maximize the lower bound, we'll be "pushing up" $\log p(x \vert \theta)$ from below, so that it's at least greater than this lower bound. Again, we can't sample an infinite amount of samples, so we will approximate this lower bound with $N$ samples. So to be clear, we'll be optimizing an approximate lower bound. We'll use minibatch SGD to maximize this estimate (actually we'll *minimize* the negative of this estimate, purely due to convention).
 
@@ -134,7 +134,7 @@ plt.show()
 
 It appears the network has learned to output something like the average digit all the time. Let's take a closer look at the loss to see if we can understand what's going on. The loss is a lower bound to $\log p(x\theta)$. Can we derive what the missing term is, such that it's an equality? This might help us to see what's going on. We'll add a term $D \geq 0$ to the RHS, and make the inequality an equality. This term $D \geq 0$ then represents what we need to add to the RHS to make the lower bound an equality.
 
-\begin{align}
+$$\begin{align}
   \log p(x \vert \theta) &= \mathbb{E}_{z \sim p(z)} \log p(x \vert z, \theta) + D \\ 
   D &= \log p(x \vert \theta) - \mathbb{E}_{z \sim p(z)} \log p(x \vert z, \theta) \\
   &= \mathbb{E}_{z \sim p(z)} \log p(x \vert \theta) - \mathbb{E}_{z \sim p(z)} \log p(x \vert z,\theta) && \text{Since} \log p(x \vert \theta) \text{ doesn't depend on } z\\
@@ -142,16 +142,16 @@ It appears the network has learned to output something like the average digit al
   &= \mathbb{E}_{z \sim p(z)} \left[ \log \frac{p(x \vert z, \theta)p(z)}{p(z \vert x, \theta)} - \log p(x \vert z,\theta) \right] && \text{Bayes rule}\\
   &= \mathbb{E}_{z \sim p(z)} \left[ \log \frac{p(z)}{p(z \vert x, \theta)} \right] \\
   &= D_{KL}\left[p(z) \vert  \vert p(z \vert x,\theta)\right]
-\end{align}
+\end{align}$$
 
 The [KL-Divergence](https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence) is a positive measure of how different two distributions are, and its minimum is zero if and only if the two distributions are the same. It's reassuring that the value we derived for $D$ is in fact greater than or equal to zero like we required it to be.
 
 Inserting this definition of $D$ back we get,
 
-\begin{align}
+$$\begin{align}
   \log p(x \vert \theta) &= \mathbb{E}_{z \sim p(z)} \log p(x \vert z, \theta) + D_{KL}\left[p(z) \vert  \vert p(z \vert x,\theta)\right] \\   
   \log p(x \vert \theta) - D_{KL}\left[p(z) \vert  \vert p(z \vert x,\theta)\right] &= \mathbb{E}_{z \sim p(z)} \log p(x \vert z, \theta)
-\end{align}
+\end{align}$$
 
 So now we can see what we're actually maximizing. If we maximize the RHS, we're either maximizing $\log p(x \vert \theta)$, which is what we want, or we're minimizing the KL divergence between the prior $p(z)$ and the posterior $p(z \vert x, \theta)$. Let's consider what doing the last thing means. The lowest the KL divergence can be is zero, when the two distributions are equal
 
