@@ -7,9 +7,9 @@ title: "A meandering introduction to VAEs - part 2"
 # Latent Variable Models
 The VAE is a so called Latent Variable Model (LVM). So what is a latent variable model? A simple latent variable model defines a probabilistic generative model of $x$ in the following way, 
 
-$$z \sim p(z \vert \theta)$$
+$$z \sim p(z  \vert  \theta)$$
 
-$$x \sim p(x \vert z, \theta) \,,$$
+$$x \sim p(x  \vert  z, \theta) \,,$$
 
 Which reads,
 1. Draw a sample of the latent variables $z$ (conditioned on the model parameters $\theta$).
@@ -17,7 +17,7 @@ Which reads,
 
 The probability distribution over $x$ is then 
 
-$$p(x\vert\theta) = \int_z p(x, z\vert\theta) = \int_z p(x\vertz, \theta)p(z\vert\theta) \,.$$
+$$p(x \vert \theta) = \int_z p(x, z \vert \theta) = \int_z p(x \vert z, \theta)p(z \vert \theta) \,.$$
 
 For simplicity, authors rarely show the explicit conditioning on the model parameters $\theta$ in papers, or sometimes they'll write $p_\theta(x)$, but it means the same thing.
 
@@ -35,11 +35,11 @@ So why might latent variable models be a good idea?
 
 OK, so we have our probability distribution over $x$ for our LVM,
 
-$$p(x\vert\theta) = \int_z p(x, z\vert\theta) = \int_z p(x\vertz, \theta)p(z\vert\theta) \,.$$
+$$p(x \vert \theta) = \int_z p(x, z \vert \theta) = \int_z p(x \vert z, \theta)p(z \vert \theta) \,.$$
 
 and if you recall, I said that maximizing the probability of the data under our model is all we need. 
 
-What does $p(z\vert\theta)$ and $p(x\vertz, \theta)$ actually look like though? And how do we evaluate the integral? At this point an example is instructive. We'll define a LVM on MNIST, and get back to the integral.
+What does $p(z \vert \theta)$ and $p(x \vert z, \theta)$ actually look like though? And how do we evaluate the integral? At this point an example is instructive. We'll define a LVM on MNIST, and get back to the integral.
 
 MNIST is arguably the "hello world" dataset of generative modelling. It consists of $70.000$ $28 \times 28$ grayscale images of handwritten digits (and associated labels 0-9). Here are some examples.
 
@@ -49,11 +49,11 @@ The values of each pixel in the original dataset is between 0 and 1, and can be 
 
 Now, let's specify our model in a little more detail,
 
-$$ z_i \sim \mathcal{N}(z_i\vert\mu=0, \sigma=1) \, \text{for} \, i \, \text{in} \, [1, ..., K]\,, $$
+$$ z_i \sim \mathcal{N}(z_i \vert \mu=0, \sigma=1) \, \text{for} \, i \, \text{in} \, [1, ..., K]\,, $$
 
 $$ [p_1, ..., p_{784}] = \text{NN}_\theta([z_1, ..., z_k]) \,,$$
 
-$$ x_j \sim \text{Bernoulli}(x_j\vertp = p_j) \, \text{for} \, j \, \text{in} \, [1, ..., 784] \,. $$
+$$ x_j \sim \text{Bernoulli}(x_j \vert p = p_j) \, \text{for} \, j \, \text{in} \, [1, ..., 784] \,. $$
 
 This reads,
 1. Sample $K$ latent variables from independent normal distributions with mean 0 and standard deviation 1. K is a hyper-parameter, the size of our latent space, something we'll decide on later.
@@ -87,7 +87,7 @@ print("samples:")
 with t.no_grad():
   z = Normal(loc=t.zeros(K), scale=t.ones(K)).sample((10,)) # step 1. z ~ p(z). shape: (10, 2)
   p = nn(z) #Step 2. shape: (10, 784)
-  x = Bernoulli(probs=p).sample() #Step 3. x ~ p(x \vert z, 𝜃). shape: (10, 784) 
+  x = Bernoulli(probs=p).sample() #Step 3. x ~ p(x  \vert  z, 𝜃). shape: (10, 784) 
 
 fig, axes = plt.subplots(1, 10, dpi=100)
 for ax, x_sample in zip(axes, x):
@@ -114,44 +114,44 @@ Please make sure you understand the code above before moving on. Notice how clos
 So how do we find $\theta$? As before, by maximizing the probability of the observed data under our model. Again, this is equivialent to maximizing the log probability of the observed data under the model. 
 
 $$\begin{align}
- \theta_{MLE} &= \max_\theta p(x\vert\theta) \\
- &= \max_\theta \log p(x\vert\theta) \\ 
- &= \max_\theta \log \int_z p(x\vertz, \theta)p(z) \,.
+ \theta_{MLE} &= \max_\theta p(x \vert \theta) \\
+ &= \max_\theta \log p(x \vert \theta) \\ 
+ &= \max_\theta \log \int_z p(x \vert z, \theta)p(z) \,.
 \end{align}$$
 
 Note: I removed the dependence on $\theta$ in the prior, because our prior $p(z)$ does not have any parameters. 
 
-Just to be very clear what I mean, I'll write out the full definition of $p(x\vert\theta)$ for our model,
+Just to be very clear what I mean, I'll write out the full definition of $p(x \vert \theta)$ for our model,
 
-$$p(x\vert\theta) = \int_z p(x\vertz, \theta)p(z) = \int_{z_1} ... \int_{z_K} \prod_{j=1}^{784} \text{Bernoulli}(x_j \vert p=p_j) \prod_{i=1}^K \mathcal{N}(z_i \vert \mu=0, \sigma=1) \,,$$
+$$p(x \vert \theta) = \int_z p(x \vert z, \theta)p(z) = \int_{z_1} ... \int_{z_K} \prod_{j=1}^{784} \text{Bernoulli}(x_j  \vert  p=p_j) \prod_{i=1}^K \mathcal{N}(z_i  \vert  \mu=0, \sigma=1) \,,$$
 
 where $p_j$ are the output of the neural network. 
 
 We'll continue with the simple form however, to keep things somewhat neat.
 
-# Computing $p(x\vert\theta)$ or $\log p(x\vert\theta)$
+# Computing $p(x \vert \theta)$ or $\log p(x \vert \theta)$
 
-So it all boils down to computing $p(x\vert\theta)$ or $\log p(x\vert\theta)$, so we can maximize it. 
+So it all boils down to computing $p(x \vert \theta)$ or $\log p(x \vert \theta)$, so we can maximize it. 
 How to do this, precisely and efficiently is really one of the core questions of latent variable models. 
 A plethora of methods have been proposed, and it's instructive to go through some of them before getting to how VAEs approach it. I'll try to proceed in the order of simplest first, and show how and when those approaches come up short, which will motivate the more advanced approaches.
 
-# Approach 1 - Estimate $p(x\vert\theta)$ with samples
+# Approach 1 - Estimate $p(x \vert \theta)$ with samples
 
-First we'll note that by definition of the [expectation](https://en.wikipedia.org/wiki/Expected_value), $p(x\vert\theta)$ is equal to the expectation over $p(x\vertz, \theta)$ with $z$ drawn from $p(z)$,
+First we'll note that by definition of the [expectation](https://en.wikipedia.org/wiki/Expected_value), $p(x \vert \theta)$ is equal to the expectation over $p(x \vert z, \theta)$ with $z$ drawn from $p(z)$,
 
-$$p(x\vert\theta) = \int_z p(x\vertz, \theta)p(z) = \mathbb{E}_{z \sim p(z)} p(x\vertz, \theta) \,.$$
+$$p(x \vert \theta) = \int_z p(x \vert z, \theta)p(z) = \mathbb{E}_{z \sim p(z)} p(x \vert z, \theta) \,.$$
 
 We can write the expectation as an average over an infinite amount of samples from $p(z)$,
 
-$$p(x\vert\theta) = \mathbb{E}_{z \sim p(z)} p(x\vertz, \theta) = \lim_{N \rightarrow \infty } \frac{1}{N} \sum_{i=1}^N p(x\vertz_i \sim p(z), \theta) \,.$$
+$$p(x \vert \theta) = \mathbb{E}_{z \sim p(z)} p(x \vert z, \theta) = \lim_{N \rightarrow \infty } \frac{1}{N} \sum_{i=1}^N p(x \vert z_i \sim p(z), \theta) \,.$$
 
 Unfortunately, we can't sample an infinite amount of samples, so we'll have to sample a finite amount, which means we'll be approximating this expectation
 
-$$p(x\vert\theta) = \mathbb{E}_{z \sim p(z)} p(x\vertz, \theta) \approx \frac{1}{N} \sum_{i=1}^N p(x\vertz_i \sim p(z), \theta) \,.$$
+$$p(x \vert \theta) = \mathbb{E}_{z \sim p(z)} p(x \vert z, \theta) \approx \frac{1}{N} \sum_{i=1}^N p(x \vert z_i \sim p(z), \theta) \,.$$
 
 where $N$, the amount of samples, is a hyper-parameter we'll have to choose. This is an [unbiased](https://en.wikipedia.org/wiki/Bias_of_an_estimator) and [consistent](https://en.wikipedia.org/wiki/Consistent_estimator) estimator, meaning it doesn't systematically under or over-estimates the true expectation, and it converges to the true expectation in the limit of infinite samples, which is great!
 
-There's just one snag, the probabilities tend to underflow. Let's assume our NN is pretty good and outputs $p=0.8$ for all the pixels that are $1$, and $p=0.2$ for all the pixels that are $0$, then $p(x\vertz, \theta) = \prod_{i=1}^{784} p_j^{x_j}(1-p_j)^{1-x_j} = 0.8^{784}$, which is a small number, but definitely not 0, but when we ask the computer to evaluate it, it [underflows](https://en.wikipedia.org/wiki/Arithmetic_underflow), and say it's 0. 
+There's just one snag, the probabilities tend to underflow. Let's assume our NN is pretty good and outputs $p=0.8$ for all the pixels that are $1$, and $p=0.2$ for all the pixels that are $0$, then $p(x \vert z, \theta) = \prod_{i=1}^{784} p_j^{x_j}(1-p_j)^{1-x_j} = 0.8^{784}$, which is a small number, but definitely not 0, but when we ask the computer to evaluate it, it [underflows](https://en.wikipedia.org/wiki/Arithmetic_underflow), and say it's 0. 
 
 ```python
 import torch as t
@@ -161,4 +161,4 @@ print(t.tensor([0.8], dtype=t.float32)**784)
 ```
 tensor([0.])
 ```
-In general, computing directly with probabilities quickly becomes very unstable, so for now on we'll turn our attention to computing $\log p(x\vert\theta)$ in the next part.
+In general, computing directly with probabilities quickly becomes very unstable, so for now on we'll turn our attention to computing $\log p(x \vert \theta)$ in the next part.
