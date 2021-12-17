@@ -9,10 +9,13 @@ In this series of posts I'll work my way up to explaining how the Variational Au
 
 Unfortunately I cannot explain everything, so I have to draw the line somewhere. In order to understand this note, you'll need to have a basic understanding of probability, neural networks and gradient descent. Make sure you understand the following points
 
-* $p(a,b) = p(a|b)p(b) = p(b|a)p(a)$
-* $p(a) = \int_b p(a,b)$
-* Bayes rule: $p(a|b) = \frac{p(b|a)p(a)}{p(b)}$
-* Neural networks are very flexible parameterized functions and they can be trained to approximate functions with optimization techniques like gradient descent.
+$p(a,b) = p(a|b)p(b) = p(b|a)p(a)$
+
+$p(a) = \int_b p(a,b)$
+
+Bayes rule: $p(a|b) = \frac{p(b|a)p(a)}{p(b)}$
+
+Neural networks are very flexible parameterized functions and they can be trained to approximate functions with optimization techniques like gradient descent.
 
 # Probabilistic Modelling Preliminaries
 
@@ -90,7 +93,10 @@ To summarize, to create a probabilistic generative model we define parameterized
 
 If you're not feeling completely confident about this, here's a little exercise you can do. Over three days you look at a ride sharing app at random times of the day and find the following number of cars within a short distance of your home address $\mathbf{x} = [3, 4, 1]$.
 
-* Define a simple probabilistic model of how data like this could be generated. Write it down in standard notation. (hint: it's not a normal distribution, since those are integers, not real numbers)
-* What are the model parameter(s)? 
-* What is the MLE of the parameter(s)? 
-* What is $\log p(\mathbf{x}|\theta_{MLE})$?
+Define a simple probabilistic model of how data like this could be generated. Write it down in standard notation. (hint: it's not a normal distribution, since those are integers, not real numbers)
+
+What are the model parameter(s)?
+
+What is the MLE of the parameter(s)? 
+ 
+What is $\log p(\mathbf{x}|\theta_{MLE})$?
