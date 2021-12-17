@@ -24,27 +24,37 @@ The VAE is a probabilistic generative model. Probabilistic modelling aims to mod
 ## A very simple probabilistic model of data
 
 Let's assume we want to model the weight of newborns. We'll describe our model by defining the generative process. That is, the process by which our model generates data. In the case of the weight of newborns, $x$, we'll write it as
+
 $$x \sim \mathcal{N}(x | \mu, \sigma) \,, $$
+
 which means: "$x$ is distributed according to a normal distribution with mean $\mu$ and standard deviation $\sigma$". You can also read it as a recipe for generating data, in which case it reads: "sample $x$ from a normal distribution with mean $\mu$ and standard deviation $\sigma$". Writing down the generative process like this is the standard notation for probabilistic models. Note that this model is probably not a perfect model since it can lead to negative weights, which we know is impossible, but for now it's fine. The $\mu$ and $\sigma$ are unspecified for now and are the parameters of our model. It's common to denote all the parameters of the model by $\theta$, so that in this case $\theta = \{\mu, \sigma\}$.
 
 Now, let's assume we observe the following weights (in grams) $\mathbf{x}=[x_1, x_2, x_3]=[2642, 3500, 4358]$, such that $x_1 = 2642$, $x_2=3500$ and $x_3 = 4358$, and this is all the data we observe. What should our model parameters be then, such that we have the best possible model of the observed data?
 
 The parameters that corresponds to the best possible model of the observed data is known as the maximum likelihood estimate (MLE). They are the parameters that maximize the probability of the observed data *under the model*.
+
 $$
 \theta_{MLE} = \max_\theta p(x|\theta)
 $$
+
 This corresponds to finding the model which is *the* most likely to have generated the observed data. For numerical reasons it's often better to maximize the log-probability, and since log is a monotonic function it preserves the location of the maximum,
+
 $$
 \theta_{MLE} = \max_\theta p(x|\theta) = \max_\theta \log p(x|\theta) \,.
 $$
+
 When we defined the model we implicitly defined the data to be independent and identically distributed (IID), since each sample $x_i$ did not depend on the other samples $x_j$. As such, the joint probability of the observed data is
+
 $$
 p(\mathbf{x}|\theta) = p(x_1|\theta)p(x_2|\theta)p(x_3|\theta) = \prod_{i=1}^3 \mathcal{N}(x_i | \mu, \sigma) \,,
 $$
+
 and 
+
 $$
 \log p(\mathbf{x}|\theta) = \sum_{i=1}^3 \log \mathcal{N}(x_i | \mu, \sigma) \,,
 $$
+
 Let's take a look at what the log probability of the observed data looks like for different values of $\mu$ and $\sigma$.
 
 ```python
