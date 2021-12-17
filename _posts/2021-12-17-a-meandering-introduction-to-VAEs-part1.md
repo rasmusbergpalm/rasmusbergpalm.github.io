@@ -9,7 +9,7 @@ In this series of posts I'll work my way up to explaining how the Variational Au
 
 Unfortunately I cannot explain everything, so I have to draw the line somewhere. In order to understand this note, you'll need to have a basic understanding of probability, neural networks and gradient descent. Make sure you understand the following points
 
-1. $p(a,b) = p(a|b)p(b) = p(b|a)p(a)$
+1. \\(p(a,b) = p(a|b)p(b) = p(b|a)p(a)\\)
 2. $p(a) = \int_b p(a,b)$
 3. Bayes rule: $p(a|b) = \frac{p(b|a)p(a)}{p(b)}$
 4. Neural networks are very flexible parameterized functions and they can be trained to approximate functions with optimization techniques like gradient descent.
