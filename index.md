@@ -41,6 +41,6 @@ I often create software libraries and tools and I love publishing them as open s
 
 I thoroughly enjoy teaching. It challenges me to understand things at a much deeper level, and I find it very rewarding.
 
-- 5 lectures and project supervision in [Advanced Applied Statistics and Multivariate Calculus](https://learnit.itu.dk/local/coursebase/view.php?ciid=789), 2021
-- 3 lectures and project supervision in [Modern AI](https://learnit.itu.dk/local/coursebase/view.php?ciid=749), 2020 and 2021
+- [Advanced Applied Statistics and Multivariate Calculus](https://learnit.itu.dk/local/coursebase/view.php?ciid=789), 2021
+- [Modern AI](https://learnit.itu.dk/local/coursebase/view.php?ciid=749), 2020 and 2021
 
