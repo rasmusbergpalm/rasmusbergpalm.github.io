@@ -18,8 +18,6 @@ Unfortunately I cannot explain everything, so I have to draw the line somewhere.
 
 The VAE is a probabilistic generative model. Probabilistic modelling aims to model data in terms of probability distributions, and is one of the main paradigms of unsupervised learning. So what does a very simple probabilistic model of data looks like?
 
-## A very simple probabilistic model of data
-
 Let's assume we want to model the weight of newborns. We'll describe our model by defining the generative process. That is, the process by which our model generates data. In the case of the weight of newborns, $x$, we'll write it as
 
 $$x \sim \mathcal{N}(x  \vert  \mu, \sigma) \,, $$
