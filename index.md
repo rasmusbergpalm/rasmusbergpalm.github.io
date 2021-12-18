@@ -10,7 +10,7 @@ I'm currently a PostDoc in the [REAL](https://real.itu.dk/) group at the IT Univ
 
 > "What I cannot create, I do not understand." - Richard Feynman
 
-# Publications
+## Publications
 
 - **Palm, Rasmus Berg**, Elias Najarro, and Sebastian Risi. [Testing the genomic bottleneck hypothesis in Hebbian meta-learning](https://arxiv.org/abs/2011.06811) NeurIPS 2020 Workshop on Pre-registration in Machine Learning. PMLR, 2021.
 - González-Duque, Miguel, **Rasmus Berg Palm**, and Sebastian Risi. [Fast Game Content Adaptation Through Bayesian-based Player Modelling](https://arxiv.org/abs/2105.08484) arXiv preprint arXiv:2105.08484 (2021).
@@ -25,7 +25,7 @@ I'm currently a PostDoc in the [REAL](https://real.itu.dk/) group at the IT Univ
 - **Palm, Rasmus Berg**, Dirk Hovy, Florian Laws and Ole Winther. [End-to-End Information Extraction without Token-Level Supervision](https://arxiv.org/abs/1707.04913) Proceedings of the Workshop on Speech-Centric Natural Language Processing. 2017.
 - **Palm, Rasmus Berg**. [Prediction as a candidate for learning deep hierarchical models of data](https://www2.imm.dtu.dk/pubdb/pubs/6284-full.html) Master thesis - Technical University of Denmark (2012).
 
-# Software
+## Software
 
 I often create software libraries and tools and I love publishing them as open source. It lets me write clean code, think about abstractions and interfaces and ship working software to users, which I enjoy.
 
@@ -37,7 +37,7 @@ I often create software libraries and tools and I love publishing them as open s
 - [Blayze](https://github.com/Tradeshift/blayze) A very fast and efficient *Bayesian* Naive Bayes classifier which perfectly incorporates new information in an online learning setting and support both Gaussian and Categorical/Multinomial features.
 - [DeepLearnToolbox](https://github.com/rasmusbergpalm/DeepLearnToolbox) - A now deprecated Matlab toolbox for Deep Learning. I was unwise enough to do my Masters on Deep Learning in Matlab, which didn't have any support for it, so I made a library for MLPs, CNNs, DBN, etc, implementing everything from the ground up, including the gradients, backprop, etc. It became quite popular. I quickly moved on to Python though (yay autograd!), and deprecated it.
 
-# Teaching
+## Teaching
 
 I thoroughly enjoy teaching. It challenges me to understand things at a much deeper level, and I find it very rewarding.
 

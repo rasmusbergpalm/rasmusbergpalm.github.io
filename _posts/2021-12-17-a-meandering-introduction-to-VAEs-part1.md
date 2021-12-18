@@ -14,7 +14,7 @@ Unfortunately I cannot explain everything, so I have to draw the line somewhere.
 3. Bayes rule: $p(a \vert b) = \frac{p(b \vert a)p(a)}{p(b)}$
 4. Neural networks are very flexible parameterized functions and they can be trained to approximate functions with optimization techniques like gradient descent.
 
-# Probabilistic Modelling Preliminaries
+## Probabilistic Modelling Preliminaries
 
 The VAE is a probabilistic generative model. Probabilistic modelling aims to model data in terms of probability distributions, and is one of the main paradigms of unsupervised learning. So what does a very simple probabilistic model of data looks like?
 

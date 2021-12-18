@@ -30,7 +30,7 @@ So why might latent variable models be a good idea?
 
 **We hope to capture "interesting" and useful latent variables.** For instance, gender, mood, hair style, age, etc. in face images. Or class (0-9) and style (slant, etc.) in handwritten digits. Capturing these latent factors of the data, might allow us to do better at downstream tasks, e.g. classifying images of digits, etc.
 
-# A latent variable model of MNIST digits
+## A latent variable model of MNIST digits
 
 OK, so we have our probability distribution over $x$ for our LVM,
 
@@ -128,13 +128,13 @@ where $p_j$ are the output of the neural network.
 
 We'll continue with the simple form however, to keep things somewhat neat.
 
-# Computing $p(x \vert \theta)$ or $\log p(x \vert \theta)$
+## Computing $p(x \vert \theta)$ or $\log p(x \vert \theta)$
 
 So it all boils down to computing $p(x \vert \theta)$ or $\log p(x \vert \theta)$, so we can maximize it. 
 How to do this, precisely and efficiently is really one of the core questions of latent variable models. 
 A plethora of methods have been proposed, and it's instructive to go through some of them before getting to how VAEs approach it. I'll try to proceed in the order of simplest first, and show how and when those approaches come up short, which will motivate the more advanced approaches.
 
-# Approach 1 - Estimate $p(x \vert \theta)$ with samples
+## Approach 1 - Estimate $p(x \vert \theta)$ with samples
 
 First we'll note that by definition of the [expectation](https://en.wikipedia.org/wiki/Expected_value), $p(x \vert \theta)$ is equal to the expectation over $p(x \vert z, \theta)$ with $z$ drawn from $p(z)$,
 
