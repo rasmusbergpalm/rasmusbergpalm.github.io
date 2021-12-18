@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title: "A meandering introduction to VAEs - part 1"
 ---
 
