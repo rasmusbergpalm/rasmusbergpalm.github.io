@@ -12,6 +12,7 @@ I'm currently a PostDoc in the [REAL](https://real.itu.dk/) group at the IT Univ
 
 ## Publications
 
+- **Rasmus Berg Palm**, Miguel González-Duque, Shyam Sudhakaran and Sebastian Risi. [Variational Neural Cellular Automata](https://arxiv.org/abs/2201.12360) ICLR 2022
 - **Palm, Rasmus Berg**, Elias Najarro, and Sebastian Risi. [Testing the genomic bottleneck hypothesis in Hebbian meta-learning](https://arxiv.org/abs/2011.06811) NeurIPS 2020 Workshop on Pre-registration in Machine Learning. PMLR, 2021.
 - González-Duque, Miguel, **Rasmus Berg Palm**, and Sebastian Risi. [Fast Game Content Adaptation Through Bayesian-based Player Modelling](https://arxiv.org/abs/2105.08484) arXiv preprint arXiv:2105.08484 (2021).
 - Olesen, Thor V.A.N., Dennis T.T. Nguyen, **Rasmus Berg Palm** and Sebastian Risi. [Evolutionary Planning in Latent Space](https://arxiv.org/abs/2011.11293) International Conference on the Applications of Evolutionary Computation. 2021.
